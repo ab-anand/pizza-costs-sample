@@ -9,6 +9,27 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
+def makeWebhookResult(req):
+    if req.get("result").get("action") != "pizza.cost":
+        return {}
+    result = req.get("result")
+    parameters = result.get("parameters")
+    variety = parameters.get("pizza-cost")
+
+    cost = {'Indian':100, 'Mexican':200, 'Chinese':300, 'American':400}
+
+    speech = "The cost of " + variety + " pizza is " + str(cost[variety]) + " euros."
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": {},
+        "contextOut": [],
+        "source": "apiai-onlinestore-shipping"
+    }
 @app.route('/')
 def index():
     return 'welcome'
@@ -27,27 +48,7 @@ def webhook():
     r.headers['Content-Type'] = 'application/json'
     return r
 
-def makeWebhookResult(req):
-    if req.get("result").get("action") != "pizza.cost":
-        return {}
-    result = req.get("result")
-    parameters = result.get("parameters")
-    variety = parameters.get("pizza-cost")
 
-    cost = {'Indian':100, 'Mexican':200, 'Chinese':300, 'American':400}
-
-    speech = "The cost of " + variety + " pizza is " + str(cost[variety]) + " euros."
-
-    print("Response:")
-    print(speech)
-
-    return {
-        "speech": speech,
-        "displayText": speech,
-        #"data": {},
-        # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
-    }
 
 
 if __name__ == '__main__':
