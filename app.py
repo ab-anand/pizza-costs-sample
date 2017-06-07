@@ -34,7 +34,7 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     variety = parameters.get("pizza-cost")
 
-    cost = {'America':100, 'India':200, 'Mexican':300, 'Chinese':400}
+    cost = {'American':100, 'Indian':200, 'Mexican':300, 'Chinese':400}
 
     speech = "The cost of shipping to " + variety + " is " + str(cost[variety]) + " euros."
 
