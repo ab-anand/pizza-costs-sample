@@ -45,12 +45,16 @@ def makeWebhookResult(req):
         "speech": speech,
         "messages": [
         {
+          "type": 0,
+          "speech": speech
+        },
+        {
           "type": 1,
           "platform": "telegram",
           "title": "Hi",
           "imageUrl": "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?201703170823",
           "buttons": []
-        },
+        }],
         "displayText": speech,
         "data": {},
         "contextOut": [],
