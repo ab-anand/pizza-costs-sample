@@ -53,7 +53,16 @@ def makeWebhookResult(req):
           "platform": "telegram",
           "title": "Hi",
           "imageUrl": "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?201703170823",
-          "buttons": []
+          "buttons": [
+          {
+              "text": "Show me the Code",
+              "postback": "http://www.grabon.in/coupon-codes/42672/"
+            },
+            {
+              "text": "Know more",
+              "postback": "Party"
+            }
+          ]
         }],
         "displayText": speech,
         "data": {},
